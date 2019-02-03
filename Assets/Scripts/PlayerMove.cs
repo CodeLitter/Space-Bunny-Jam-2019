@@ -2,32 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMove : MonoBehaviour {
+public class PlayerMove : MonoBehaviour
+{
+    public float speed = 10.0f; //public variable will have default values if possible 
+    [HideInInspector] public Rigidbody2D rigidbody2D; //Hidden public come after visible variables
+    private Vector3 m_velocity; //private variables will be prefixed with m_ and will be last in the variable listing
 
-    public float Speed;
-    //public float LaunchSpeed;
-    private Rigidbody rb;
-
-    void Start()
+    //Use awake to initialize local components within this gameobject
+    private void Awake()
     {
         //Detects and get RB from object
-        rb = GetComponent<Rigidbody>();  
-	}
-
-    void FixedUpdate()
-    {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVerticle = Input.GetAxis("Vertical");
-        
-        Vector3 movement = new Vector3 (moveHorizontal, moveVerticle, 0.0f);
-        rb.velocity = movement * Speed;
+        rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    private void FixedUpdate()
     {
-     //Ship should move vertically automatically, do I need this?
-     //transform.Translate(0, LaunchSpeed, 0);
+        //Apply velocity in fixedUpdate
+        rigidbody2D.velocity = m_velocity * speed;
     }
 
-    
+    //Use update when capturing input as it is framerate dependent
+    private void Update()
+    {
+        //Save captured input, horizontal movement is only needed
+        m_velocity.x = Input.GetAxis("Horizontal");
+    }
+
+
 }
