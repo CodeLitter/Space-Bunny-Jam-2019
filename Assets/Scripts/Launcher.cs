@@ -2,10 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//TODO Engine
 public class Launcher : MonoBehaviour
 {
-    public UnityEngine.Events.UnityEvent launchEvent;
+    public float force = 10.0f;
     [HideInInspector] public Rigidbody2D rigidbody2D;
+    private Fuel m_fuel;
+    private Fuel fuel
+    {
+        get
+        {
+            m_fuel = m_fuel ?? GetComponentInChildren<Fuel>();
+            return m_fuel;
+        }
+    }
 
     private void Awake()
     {
@@ -14,10 +24,10 @@ public class Launcher : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (fuel && fuel.Amount > 0.0f)
         {
-            rigidbody2D.AddForce(rigidbody2D.transform.up * 100.0f, ForceMode2D.Impulse);
-            launchEvent.Invoke();
+            rigidbody2D.velocity = rigidbody2D.transform.up * force + (Vector3)Physics2D.gravity;
+            fuel.Amount -= Time.deltaTime;
         }
     }
 }

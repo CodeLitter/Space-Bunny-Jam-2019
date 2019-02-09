@@ -9,15 +9,13 @@ public class DeactivateByCollision : MonoBehaviour {
 		
 	}
 
-    void OnCollisionEnter(Collision collision)
-
+    private void OnParticleCollision(GameObject other)
     {
-        if (collision.collider.tag == "Hazard")
+        if (other.CompareTag("Hazard"))
         {
             gameObject.SetActive(false);
             Debug.Log("Touch the butt");
-        }
-        
+        }        
     }
  }
 

@@ -10,7 +10,7 @@ public class CameraBounder : CinemachineExtension
 
     protected override void PostPipelineStageCallback(CinemachineVirtualCameraBase vcam, CinemachineCore.Stage stage, ref CameraState state, float deltaTime)
     {
-        if (stage == CinemachineCore.Stage.Finalize)
+        if (stage == CinemachineCore.Stage.Aim)
         {
             var bounds = boundingShape.bounds;
             var target_position = vcam.Follow.position;
