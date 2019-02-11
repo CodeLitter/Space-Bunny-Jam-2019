@@ -35,7 +35,22 @@ ModelImporter:
     4300004: eyebrowR
     4300006: helmet
     4300008: tubing
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BodyMat
+    second: {fileID: 2100000, guid: cbd1269e8693c924cbd5d246053b221d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: headMat
+    second: {fileID: 2100000, guid: 5c24127ef4803b74cbc605f380185514, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phong2
+    second: {fileID: 2100000, guid: 7585a8e71f5eec645ac9fec595246b52, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
