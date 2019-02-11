@@ -13,6 +13,10 @@ public class Launcher : MonoBehaviour
         get
         {
             m_fuel = m_fuel ?? GetComponentInChildren<Fuel>();
+            if (!m_fuel.gameObject.activeSelf)
+            {
+                m_fuel = null;
+            }
             return m_fuel;
         }
     }
@@ -24,7 +28,7 @@ public class Launcher : MonoBehaviour
 
     private void Update()
     {
-        if (fuel && fuel.Amount > 0.0f)
+        if (fuel != null && fuel.Amount > 0.0f)
         {
             rigidbody2D.velocity = rigidbody2D.transform.up * force + (Vector3)Physics2D.gravity;
             fuel.Amount -= Time.deltaTime;

@@ -13,6 +13,10 @@ public class Fuel : MonoBehaviour
         set
         {
             m_amount = value;
+            if (m_amount.Value < 0.0f)
+            {
+                gameObject.SetActive(false);
+            }
         }
         get
         {
