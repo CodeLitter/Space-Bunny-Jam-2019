@@ -24,7 +24,7 @@ public class CameraTracker : CinemachineExtension
             var noise = (vcam as CinemachineVirtualCamera).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
             var rigidbody = vcam.Follow.GetComponent<Rigidbody2D>();
 
-            noise.m_AmplitudeGain = ((rigidbody.velocity - m_velocity) / Time.fixedDeltaTime).magnitude * Time.deltaTime;
+            noise.m_AmplitudeGain = ((rigidbody.velocity - m_velocity).y / Time.fixedDeltaTime) * Time.deltaTime;
             m_velocity = rigidbody.velocity;
         }
     }
