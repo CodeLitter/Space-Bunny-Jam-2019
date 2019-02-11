@@ -20,7 +20,18 @@ public class FuelGauge : MonoBehaviour
 
     private void LateUpdate()
     {
-        slider.value = fuels.Select(item => item.Amount / item.max).Aggregate(Aggregate) / fuels.Length * slider.maxValue;
+        if (target.hasChanged)
+        {
+            fuels = target.GetComponentsInChildren<Fuel>();
+        }
+        if (fuels.Length != 0)
+        {
+            slider.value = fuels.Select(item => item.Amount / item.max).Aggregate(Aggregate) / fuels.Length * slider.maxValue;
+        }
+        else
+        {
+            slider.value = 0.0f;
+        }
     }
 
     private float Aggregate(float accumulation, float next)

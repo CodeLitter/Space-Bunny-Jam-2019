@@ -1,22 +1,34 @@
-﻿using System.Collections;
+﻿using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//TODO Engine
-public class Launcher : MonoBehaviour
+public class Engine : MonoBehaviour
 {
     public float force = 10.0f;
     [HideInInspector] public Rigidbody2D rigidbody2D;
+    private Fuel[] m_fuels;
     private Fuel m_fuel;
-    private Fuel fuel
+    private bool isDirty = true;
+
+    public ICollection<Fuel> Fuels
     {
         get
         {
-            m_fuel = m_fuel ?? GetComponentInChildren<Fuel>();
-            if (!m_fuel.gameObject.activeSelf)
+            if (isDirty)
             {
-                m_fuel = null;
+                m_fuels = GetComponentsInChildren<Fuel>();
+                isDirty = false;
             }
+            return m_fuels;
+        }
+    }
+
+    private Fuel Current
+    {
+        get
+        {
+            m_fuel = m_fuel ?? Fuels.FirstOrDefault();
             return m_fuel;
         }
     }
@@ -28,10 +40,19 @@ public class Launcher : MonoBehaviour
 
     private void Update()
     {
-        if (fuel != null && fuel.Amount > 0.0f)
+        if (Current != null)
         {
-            rigidbody2D.velocity = rigidbody2D.transform.up * force + (Vector3)Physics2D.gravity;
-            fuel.Amount -= Time.deltaTime;
+            if (Current.Amount > 0.0f)
+            {
+                rigidbody2D.AddForce(rigidbody2D.transform.up * force);
+                Current.Amount -= Time.deltaTime;
+            }
+            else
+            {
+                Current.gameObject.SetActive(false);
+                m_fuel = null;
+            }
         }
+        isDirty = isDirty || transform.hasChanged;
     }
 }

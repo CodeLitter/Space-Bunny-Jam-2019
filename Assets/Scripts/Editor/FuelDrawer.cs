@@ -11,16 +11,8 @@ public class FuelDrawer : Editor
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.PrefixLabel("Fuel:");
 
-        if (fuel.IsNew)
-        {
-            GUILayout.Label("???", GUILayout.Width(25));
-        }
-        else
-        {
-            var label = string.Format("{0:0.00}", fuel.Amount);
-            GUILayout.Label(label, GUILayout.Width(45));
-            Repaint();
-        }
+        var label = string.Format("{0:0.00}", fuel.Amount);
+        GUILayout.Label(label, GUILayout.Width(45));
 
         GUILayout.Label("/", GUILayout.Width(10));
 
@@ -29,6 +21,6 @@ public class FuelDrawer : Editor
         EditorGUILayout.EndHorizontal();
 
         serializedObject.ApplyModifiedProperties();
-
+        Repaint();
     }
 }

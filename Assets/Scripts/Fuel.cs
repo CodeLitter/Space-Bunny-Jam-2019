@@ -4,16 +4,19 @@ public class Fuel : MonoBehaviour
 {
     public float max = 100.0f;
     private float? m_amount;
-    public bool IsNew
+    public bool IsEmpty
     {
-        get { return !m_amount.HasValue; }
+        get
+        {
+            return Amount < 0.0f;
+        }
     }
     public float Amount
     {
         set
         {
             m_amount = value;
-            if (m_amount.Value < 0.0f)
+            if (IsEmpty)
             {
                 gameObject.SetActive(false);
             }
@@ -22,7 +25,7 @@ public class Fuel : MonoBehaviour
         {
             if (!m_amount.HasValue)
             {
-                m_amount = max;
+                return max;
             }
             return m_amount.Value;
         }
