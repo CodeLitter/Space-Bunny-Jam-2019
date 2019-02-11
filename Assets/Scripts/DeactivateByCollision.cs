@@ -2,20 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeactivateByCollision : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-
+public class CollisionTrigger : MonoBehaviour
+{
+    [Tag] public string colliderTag;
+    public UnityEngine.Events.UnityEvent collisionEvent;
     private void OnParticleCollision(GameObject other)
     {
-        if (other.CompareTag("Hazard"))
+        if (other.CompareTag(colliderTag))
         {
-            gameObject.SetActive(false);
-            Debug.Log("Touch the butt");
-        }        
+            collisionEvent.Invoke();
+        }
     }
- }
+}
 
