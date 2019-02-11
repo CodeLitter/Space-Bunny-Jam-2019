@@ -8,6 +8,8 @@ using Cinemachine;
 [AddComponentMenu("")]
 public class CameraTracker : CinemachineExtension
 {
+    private Vector2 m_velocity;
+
     protected override void PostPipelineStageCallback(CinemachineVirtualCameraBase vcam, CinemachineCore.Stage stage, ref CameraState state, float deltaTime)
     {
         if (stage == CinemachineCore.Stage.Body)
@@ -20,7 +22,10 @@ public class CameraTracker : CinemachineExtension
         if (stage == CinemachineCore.Stage.Noise)
         {
             var noise = (vcam as CinemachineVirtualCamera).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-            noise.m_AmplitudeGain = vcam.Follow.GetComponent<Rigidbody2D>().velocity.magnitude * Time.deltaTime;
+            var rigidbody = vcam.Follow.GetComponent<Rigidbody2D>();
+
+            noise.m_AmplitudeGain = ((rigidbody.velocity - m_velocity) / Time.fixedDeltaTime).magnitude * Time.deltaTime;
+            m_velocity = rigidbody.velocity;
         }
     }
 }
