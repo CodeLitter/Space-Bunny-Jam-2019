@@ -1,0 +1,2 @@
+SatellitesA Material= Satellites 001, 002, 004, 005, 006, 011
+SatelittesB Material= Satellites 003, 007, 008, 009, 010
