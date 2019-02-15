@@ -15339,7 +15339,7 @@ GameObject:
   - component: {fileID: 907874554}
   m_Layer: 0
   m_Name: Fuel
-  m_TagString: Hazard
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15978,7 +15978,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 50
+    maxNumParticles: 10
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -16187,7 +16187,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1000
+      scalar: 10
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -19955,6 +19955,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 949252971}
+  - component: {fileID: 949252972}
   m_Layer: 0
   m_Name: Fuel
   m_TagString: Untagged
@@ -19976,6 +19977,19 @@ Transform:
   m_Father: {fileID: 1675146170}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &949252972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 949252970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab3536290e6b492458d19aeef0ddc9a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1778892868321220, guid: 99fdf874c0581704285fd12717049c1f, type: 2}
+  targetTag: Untagged
 --- !u!1 &952495426
 GameObject:
   m_ObjectHideFlags: 0
