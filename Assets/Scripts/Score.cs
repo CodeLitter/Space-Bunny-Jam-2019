@@ -18,15 +18,15 @@ public class Score : MonoBehaviour
         var distance = (target.position - start.position).y * 10.0f;
         if (distance < 0.0f)
         {
-            text.text = "Score:<0km";
+            text.text = "<0km";
         }
         else if (distance < 1000.0f)
         {
-            text.text = string.Format("Score:{0:0.00}m", distance);
+            text.text = string.Format("{0:0.00}m", distance);
         }
         else
         {
-            text.text = string.Format("Score:{0:0.00}km", distance / 1000.0f);
+            text.text = string.Format("{0:0.00}km", distance / 1000.0f);
         }
     }
 }
