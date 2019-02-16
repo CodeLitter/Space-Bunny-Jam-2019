@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.00978638, g: 0.051889956, b: 0.15229365, a: 1}
+  m_IndirectSpecularColor: {r: 0.009786535, g: 0.05188808, b: 0.1522932, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -709,7 +709,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.7894038, y: 0.039}
   m_AnchorMax: {x: 0.9648076, y: 0.093581565}
-  m_AnchoredPosition: {x: 2.2999878, y: 3.6}
+  m_AnchoredPosition: {x: 2.2999878, y: 3.600006}
   m_SizeDelta: {x: -20, y: -8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &232341504
@@ -13835,17 +13835,17 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
-    enabled: 0
-    collisionShape0: {fileID: 0}
+    enabled: 1
+    collisionShape0: {fileID: 861880398}
     collisionShape1: {fileID: 0}
     collisionShape2: {fileID: 0}
     collisionShape3: {fileID: 0}
     collisionShape4: {fileID: 0}
     collisionShape5: {fileID: 0}
-    inside: 1
+    inside: 0
     outside: 0
-    enter: 0
-    exit: 0
+    enter: 2
+    exit: 1
     radiusScale: 1
   SubModule:
     serializedVersion: 2
@@ -23329,17 +23329,17 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
-    enabled: 0
-    collisionShape0: {fileID: 0}
+    enabled: 1
+    collisionShape0: {fileID: 861880398}
     collisionShape1: {fileID: 0}
     collisionShape2: {fileID: 0}
     collisionShape3: {fileID: 0}
     collisionShape4: {fileID: 0}
     collisionShape5: {fileID: 0}
-    inside: 1
+    inside: 0
     outside: 0
-    enter: 0
-    exit: 0
+    enter: 2
+    exit: 1
     radiusScale: 1
   SubModule:
     serializedVersion: 2
@@ -24422,7 +24422,6 @@ GameObject:
   - component: {fileID: 861880399}
   - component: {fileID: 861880400}
   - component: {fileID: 861880402}
-  - component: {fileID: 861880401}
   m_Layer: 0
   m_Name: CM vcam2
   m_TagString: Untagged
@@ -24491,31 +24490,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b42b61919601f542b6ec906035a450a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &861880401
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 861880397}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 15, y: 1}
-  m_EdgeRadius: 0
 --- !u!114 &861880402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24527,7 +24501,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cf6a703062866b4dbd3e7db3dde70bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boundingShape: {fileID: 861880401}
+  boundingShape:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 15
+    height: 1
 --- !u!1 &899611908
 GameObject:
   m_ObjectHideFlags: 0
@@ -43975,6 +43954,60 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1589622766}
   m_CullTransparentMesh: 0
+--- !u!1 &1660482290
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1660482291}
+  - component: {fileID: 1660482292}
+  m_Layer: 5
+  m_Name: Indicator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1660482291
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1660482290}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1836271499}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1660482292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1660482290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c072a0bfd13095c4996cc882faf642c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 598d4c4813458524d86547d9c46f5f07, type: 3}
+  camera: {fileID: 534669904}
+  targetRigidbody2D: {fileID: 222139464}
+  particleSystems:
+  - {fileID: 792178832}
+  - {fileID: 2104146837}
+  - {fileID: 280916384}
+  - {fileID: 998886296}
+  - {fileID: 771743093}
 --- !u!1 &1665991316
 GameObject:
   m_ObjectHideFlags: 0
@@ -44404,6 +44437,7 @@ RectTransform:
   - {fileID: 1924550774}
   - {fileID: 899611909}
   - {fileID: 232341503}
+  - {fileID: 1660482291}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
